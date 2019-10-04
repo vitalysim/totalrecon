@@ -49,6 +49,10 @@ Usage:
 	Enter choice [ 1 - 99] 
 
 
+**Note**: You need to install the dependencies before installing the tools.
+
+Most of the tools are added to the PATH, you can access them from everywhere in the file system.
+
 ## Contribution 
 
 Feel free to add more tools so that the Bug Bounty community can benefit from them.

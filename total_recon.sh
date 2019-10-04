@@ -26,6 +26,10 @@ show_menus() {
 	echo "   8. WhatWeb"
 	echo "   9. Subjack"
 	echo "  10. Amass"
+	echo "  11. Waybackurls"
+	echo "  12. Meg"
+	echo "  13. GitGraber"
+	echo "  14. getJS"
 	echo -e "\n\n  88. Install all tools"
 	echo -e "  99. Exit\n"
 }
@@ -45,6 +49,10 @@ read_option(){
 		8) install_whatweb ;;
 		9) install_subjack ;;
 		10) install_amass ;;
+        11) install_waybackurls;;
+        12) install_meg ;;
+        13) install_gitGraber ;;
+        14) install_getjs ;;
         88) install_all ;;
 		99) exit 0;;
 		*) echo -e "${RED}Error...${SET}" && sleep 2
@@ -204,6 +212,43 @@ install_nmap() {
     pause
 }
 
+install_waybackurls() {
+    # https://github.com/tomnomnom/waybackurls
+    echo -e "${GREEN}Installing Waybackurls ${SET}"
+    go get github.com/tomnomnom/waybackurls
+    sudo cp $HOME/go/bin/waybackurls /usr/local/bin
+    echo -e "${YELLOW}Finished installing Waybackurls ${SET}\n"
+    pause
+}
+
+install_meg() {
+    # https://github.com/tomnomnom/meg
+    echo -e "${GREEN}Installing Meg ${SET}"
+    go get github.com/tomnomnom/meg
+    sudo cp $HOME/go/bin/meg /usr/local/bin
+    echo -e "${YELLOW}Finished installing Meg ${SET}\n"
+    pause
+}
+
+install_gitGraber() {
+    # https://github.com/hisxo/gitGraber.git
+    echo -e "${GREEN}Installing gitGraber ${SET}"
+    git clone https://github.com/hisxo/gitGraber.git $HOME/tools/gitGraber
+    cd $HOME/tools/gitGraber && pip3 install -r requirements.txt
+    echo -e "\n\n${RED}Run this tool from ${HOME}/tools/gitGraber ${SET}\n"
+    echo -e "${YELLOW}Finished installing gitGraber ${SET}\n"
+    pause
+}
+
+install_getjs() {
+    # https://github.com/003random/getJS
+    echo -e "${GREEN}Installing getJS ${SET}"
+    go get github.com/003random/getJS
+    sudo cp $HOME/go/bin/getJS /usr/local/bin
+    echo -e "${YELLOW}Finished installing getJS ${SET}\n"
+    pause
+}
+
 install_all () {
     install_ffuf
     install_findomain
@@ -216,6 +261,10 @@ install_all () {
     install_subjack
     install_amass
     install_nmap
+    install_waybackurls
+    install_meg
+    install_gitGraber
+    install_getjs
     pause
 }
 
