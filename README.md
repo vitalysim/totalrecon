@@ -15,9 +15,13 @@ Currently installing:
    8. WhatWeb
    9. Subjack
   10. Amass
+  11. Waybackurls
+  12. Meg
+  13. GitGraber
+  14. getJS
 
 Usage:
-
+``` console
     ubuntu@recon:~$ chmod +x total_recon.sh
     ubuntu@recon:~$ ./total_recon.sh 
     
@@ -42,12 +46,16 @@ Usage:
 	   8. WhatWeb
 	   9. Subjack
 	  10. Amass
+	  11. Waybackurls
+          12. Meg
+          13. GitGraber
+          14. getJS
 	  
 	  88. Install all tools
 	  99. Exit
 
 	Enter choice [ 1 - 99] 
-
+```
 
 **Note**: You need to install the dependencies before installing the tools.
 
