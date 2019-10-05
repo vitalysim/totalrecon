@@ -30,6 +30,7 @@ show_menus() {
 	echo "  12. Meg"
 	echo "  13. GitGraber"
 	echo "  14. getJS"
+	echo "  15. LinkFinder"
 	echo -e "\n\n  88. Install all tools"
 	echo -e "  99. Exit\n"
 }
@@ -53,6 +54,7 @@ read_option(){
         12) install_meg ;;
         13) install_gitGraber ;;
         14) install_getjs ;;
+        15) install_linkfinder ;;
         88) install_all ;;
 		99) exit 0;;
 		*) echo -e "${RED}Error...${SET}" && sleep 2
@@ -114,11 +116,7 @@ install_findomain() {
 install_dirsearch() {
     echo -e "${GREEN}Installing dirsearch ${SET}"
     git clone https://github.com/maurosoria/dirsearch.git $HOME/tools/dirsearch
-    if [[ ":$PATH:" == *":$HOME/tools/dirsearch:"* ]]; then
-        echo "Dirsearch dir already in path"
-    else
-        echo "export PATH=$PATH:$HOME/tools/dirsearch" >> $HOME/.bash_profile && source $HOME/.bash_profile
-    fi
+    add_to_path dirsearch
     ln -sf $HOME/tools/dirsearch/dirsearch.py $HOME/tools/dirsearch/dirsearch && chmod +x $HOME/tools/dirsearch/dirsearch
     echo -e "${YELLOW}Finished installing dirsearch ${SET}\n"
     pause
@@ -160,11 +158,7 @@ install_sublist3r() {
     echo -e "${GREEN}Installing sublist3r ${SET}"
     git clone https://github.com/aboul3la/Sublist3r.git $HOME/tools/sublist3r
     pip3 install --no-cache-dir --install-option="--prefix=/install" -r $HOME/tools/sublist3r/requirements.txt
-    if [[ ":$PATH:" == *":$HOME/tools/sublist3r:"* ]]; then
-        echo "Sublist3r dir already in path"
-    else
-        echo "export PATH=$PATH:$HOME/tools/sublist3r" >> $HOME/.bash_profile && source $HOME/.bash_profile
-    fi
+    add_to_path sublist3r
     ln -sf $HOME/tools/sublist3r/sublist3r.py $HOME/tools/sublist3r/sublist3r && chmod +x $HOME/tools/sublist3r/sublist3r
     echo -e "${YELLOW}Finished installing sublist3r ${SET}\n"
     pause
@@ -175,12 +169,7 @@ install_whatweb() {
     echo -e "${GREEN}Installing WhatWeb ${SET}"
     git clone https://github.com/urbanadventurer/WhatWeb.git $HOME/tools/whatweb
     cd $HOME/tools/whatweb && sudo gem install bundler && bundle install
-    if [[ ":$PATH:" == *":$HOME/tools/whatweb:"* ]]; then
-        echo "Whatweb dir already in path"
-    else
-        echo "export PATH=$PATH:$HOME/tools/whatweb" >> $HOME/.bash_profile && source $HOME/.bash_profile
-    fi
-    
+    add_to_path whatweb    
     echo -e "${YELLOW}Finished installing WhatWeb ${SET}\n"
     pause
 
@@ -249,6 +238,36 @@ install_getjs() {
     pause
 }
 
+install_linkfinder() {
+    # https://github.com/GerbenJavado/LinkFinder
+    echo -e "${GREEN}Installing LinkFinder ${SET}"
+    git clone https://github.com/GerbenJavado/LinkFinder.git $HOME/tools/LinkFinder
+    pip3 install --no-cache-dir --install-option="--prefix=/install" -r $HOME/tools/LinkFinder/requirements.txt
+    add_to_path LinkFinder
+    ln -sf $HOME/tools/LinkFinder/linkfinder.py $HOME/tools/LinkFinder/linkfinder && chmod +x $HOME/tools/LinkFinder/linkfinder
+    echo -e "${YELLOW}Finished installing LinkFinder ${SET}\n"
+    pause
+}
+
+add_to_path() {
+    if [[ ":$PATH:" == *":$HOME/tools/$1:"* ]] || grep -q "$HOME/tools/$1" $HOME/.bash_profile; then
+        echo -e "${RED}$1 dir already in path${SET}"
+    else
+        PATH_EXPORT=$(sed -n "/export PATH/p" ~/.bash_profile)
+        if [ -z "$PATH_EXPORT" ]; then
+            PATH_EXPORT=$PATH:$HOME/tools/$1
+            echo $PATH_EXPORT
+            echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
+        else
+            PATH_EXPORT=$(sed -n "/export PATH/p" ~/.bash_profile):$HOME/tools/$1
+            echo $PATH_EXPORT
+            sed -i '/^export PATH/d' $HOME/.bash_profile > $HOME/.bash_profile
+            echo "export PATH=${PATH_EXPORT}" >> $HOME/.bash_profile && source $HOME/.bash_profile
+        fi
+        echo -e "${GREEN}Added $1 to PATH ${SET}"
+    fi
+}
+
 install_all () {
     install_ffuf
     install_findomain
@@ -265,6 +284,7 @@ install_all () {
     install_meg
     install_gitGraber
     install_getjs
+    install_linkfinder
     pause
 }
 
@@ -276,4 +296,3 @@ do
     show_menus
     read_option
 done
-

@@ -19,6 +19,7 @@ Currently installing:
   12. Meg
   13. GitGraber
   14. getJS
+  15. LinkFinder
 
 Usage:
 ``` console
@@ -47,9 +48,10 @@ Usage:
 	   9. Subjack
 	  10. Amass
 	  11. Waybackurls
-          12. Meg
-          13. GitGraber
-          14. getJS
+     12. Meg
+     13. GitGraber
+     14. getJS
+     15. LinkFinder
 	  
 	  88. Install all tools
 	  99. Exit
@@ -60,6 +62,8 @@ Usage:
 **Note**: You need to install the dependencies before installing the tools.
 
 Most of the tools are added to the PATH, you can access them from everywhere in the file system.
+
+**Run 'source $HOME/.bash_profile' after running the script, to add tools to PATH**
 
 ## Contribution 
 
