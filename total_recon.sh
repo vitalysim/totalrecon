@@ -15,7 +15,7 @@ show_menus() {
         ${SET}"
     echo -e "${CYAN}TotalRecon will install all the recon tools you need${SET}"
     echo "Tools:"
-    echo "   0. Install dependencis [GO, Python3, Ruby, Rust, Chromium, etc]"
+    echo "   0. Install dependencies [GO, Python3, Ruby, Rust, Chromium, etc]"
 	echo "   1. Fast web fuzzer (ffuf)"
 	echo "   2. Dirsearch"
 	echo "   3. Findomain"
@@ -38,7 +38,7 @@ read_option(){
 	local choice
 	read -p "Enter choice [ 1 - 99] " choice
 	case $choice in
-        0) install_dependencis ;;
+        0) install_dependencies ;;
 		1) install_ffuf ;;
 		2) install_dirsearch ;;
 		3) install_findomain ;;
@@ -78,15 +78,15 @@ load_colors() {
     SET='\033[0m'
 }
 
-install_dependencis() {
-    echo -e "${GREEN}Installing tool's dependencis ${SET}"
+install_dependencies() {
+    echo -e "${GREEN}Installing tools' dependencies ${SET}"
     sudo add-apt-repository ppa:longsleep/golang-backports
     sudo apt-get update && sudo apt-get -y upgrade
     sudo apt-get install -y golang-go build-essential python3 python3-dev wget unzip chromium-browser gcc make libpcap-dev python3-pip ruby-full
     sudo ln -s /usr/bin/python3 /usr/bin/python
     curl https://sh.rustup.rs -sSf | sh
     source $HOME/.cargo/env
-    echo -e "${YELLOW}Finished installing tool's dependencis ${SET}\n"
+    echo -e "${YELLOW}Finished installing tools' dependencies ${SET}\n"
     pause
 }
 
