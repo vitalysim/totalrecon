@@ -67,7 +67,7 @@ Usage:
 
 Most of the tools are added to the PATH, you can access them from everywhere in the file system.
 
-**Run 'source $HOME/.bash_profile' after running the script, to add tools to PATH**
+**Run ```source $HOME/.bash_profile``` after running the script, to add tools to PATH.**
 
 ## Contribution 
 
