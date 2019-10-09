@@ -31,6 +31,8 @@ show_menus() {
 	echo "  13. GitGraber"
 	echo "  14. getJS"
 	echo "  15. LinkFinder"
+	echo "  16. MassDNS"
+	echo "  17. EyeWitness"
 	echo -e "\n\n  88. Install all tools"
 	echo -e "  99. Exit\n"
 }
@@ -55,6 +57,8 @@ read_option(){
         13) install_gitGraber ;;
         14) install_getjs ;;
         15) install_linkfinder ;;
+        16) install_massdns ;;
+        17) install_eyewitness ;;
         88) install_all ;;
 		99) exit 0;;
 		*) echo -e "${RED}Error...${SET}" && sleep 2
@@ -249,6 +253,25 @@ install_linkfinder() {
     pause
 }
 
+install_massdns() {
+    # https://github.com/blechschmidt/massdns
+    echo -e "${GREEN}Installing MassDNS ${SET}"
+    git clone https://github.com/blechschmidt/massdns.git $HOME/tools/massdns
+    cd $HOME/tools/massdns && sudo make && sudo cp $HOME/tools/massdns/bin/massdns /usr/local/bin
+    echo -e "${YELLOW}Finished installing MassDNS ${SET}\n"
+    pause
+}
+
+install_eyewitness() {
+    # https://github.com/FortyNorthSecurity/EyeWitness
+    echo -e "${GREEN}Installing EyeWitness ${SET}"
+    git clone https://github.com/FortyNorthSecurity/EyeWitness.git $HOME/tools/eyewitness
+    cd $HOME/tools/eyewitness/setup && sudo ./setup.sh
+    echo -e "\n\n${RED}Run this tool from ${HOME}/tools/eyewitness - [./EyeWitness.py -h] ${SET}\n"
+    echo -e "${YELLOW}Finished installing EyeWitness ${SET}\n"
+    pause
+}
+
 add_to_path() {
     if [[ ":$PATH:" == *":$HOME/tools/$1:"* ]] || grep -q "$HOME/tools/$1" $HOME/.bash_profile; then
         echo -e "${RED}$1 dir already in path${SET}"
@@ -285,6 +308,7 @@ install_all () {
     install_gitGraber
     install_getjs
     install_linkfinder
+    install_massdns
     pause
 }
 

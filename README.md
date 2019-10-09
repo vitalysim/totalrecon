@@ -20,6 +20,8 @@ Currently installing:
   13. GitGraber
   14. getJS
   15. LinkFinder
+  16. MassDNS
+  17. EyeWitness
 
 Usage:
 ``` console
@@ -52,6 +54,8 @@ Usage:
      13. GitGraber
      14. getJS
      15. LinkFinder
+     16. MassDNS
+     17. EyeWitness
 	  
 	  88. Install all tools
 	  99. Exit
