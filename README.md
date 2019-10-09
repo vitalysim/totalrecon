@@ -50,12 +50,12 @@ Usage:
 	   9. Subjack
 	  10. Amass
 	  11. Waybackurls
-     12. Meg
-     13. GitGraber
-     14. getJS
-     15. LinkFinder
-     16. MassDNS
-     17. EyeWitness
+          12. Meg
+          13. GitGraber
+          14. getJS
+          15. LinkFinder
+          16. MassDNS
+          17. EyeWitness
 	  
 	  88. Install all tools
 	  99. Exit
