@@ -16,25 +16,25 @@ show_menus() {
     echo -e "${CYAN}TotalRecon will install all the recon tools you need${SET}"
     echo "Tools:"
     echo "   0. Install dependencies [GO, Python3, Ruby, Rust, Chromium, etc]"
-	echo "   1. Fast web fuzzer (ffuf)"
-	echo "   2. Dirsearch"
-	echo "   3. Findomain"
-	echo "   4. Httprobe"
-	echo "   5. Masscan"
-	echo "   6. Nmap"
-	echo "   7. Sublist3r"
-	echo "   8. WhatWeb"
-	echo "   9. Subjack"
-	echo "  10. Amass"
-	echo "  11. Waybackurls"
-	echo "  12. Meg"
-	echo "  13. GitGraber"
-	echo "  14. getJS"
-	echo "  15. LinkFinder"
-	echo "  16. MassDNS"
-	echo "  17. EyeWitness"
-	echo -e "\n\n  88. Install all tools"
-	echo -e "  99. Exit\n"
+    echo "   1. Fast web fuzzer (ffuf)"
+    echo "   2. Dirsearch"
+    echo "   3. Findomain"
+    echo "   4. Httprobe"
+    echo "   5. Masscan"
+    echo "   6. Nmap"
+    echo "   7. Sublist3r"
+    echo "   8. WhatWeb"
+    echo "   9. Subjack"
+    echo "  10. Amass"
+    echo "  11. Waybackurls"
+    echo "  12. Meg"
+    echo "  13. GitGraber"
+    echo "  14. getJS"
+    echo "  15. LinkFinder"
+    echo "  16. MassDNS"
+    echo "  17. EyeWitness"
+    echo -e "\n\n  88. Install all tools"
+    echo -e "  99. Exit\n"
 }
 
 read_option(){
@@ -42,16 +42,16 @@ read_option(){
 	read -p "Enter choice [ 1 - 99] " choice
 	case $choice in
         0) install_dependencies ;;
-		1) install_ffuf ;;
-		2) install_dirsearch ;;
-		3) install_findomain ;;
-		4) install_httprobe ;;
-		5) install_masscan ;;
-		6) install_nmap ;;
-		7) install_sublist3r ;;
-		8) install_whatweb ;;
-		9) install_subjack ;;
-		10) install_amass ;;
+	1) install_ffuf ;;
+	2) install_dirsearch ;;
+	3) install_findomain ;;
+	4) install_httprobe ;;
+	5) install_masscan ;;
+	6) install_nmap ;;
+	7) install_sublist3r ;;
+	8) install_whatweb ;;
+	9) install_subjack ;;
+	10) install_amass ;;
         11) install_waybackurls;;
         12) install_meg ;;
         13) install_gitGraber ;;
@@ -60,8 +60,8 @@ read_option(){
         16) install_massdns ;;
         17) install_eyewitness ;;
         88) install_all ;;
-		99) exit 0;;
-		*) echo -e "${RED}Error...${SET}" && sleep 2
+	99) exit 0;;
+	*) echo -e "${RED}Error...${SET}" && sleep 2
 	esac
 }
 
@@ -309,6 +309,7 @@ install_all () {
     install_getjs
     install_linkfinder
     install_massdns
+    install_eyewitness
     pause
 }
 
@@ -316,7 +317,7 @@ trap '' SIGINT SIGQUIT SIGTSTP
 
 while true
 do
-	load_colors
+    load_colors
     show_menus
     read_option
 done
