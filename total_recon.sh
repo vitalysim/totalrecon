@@ -86,10 +86,11 @@ load_colors() {
 
 install_dependencies() {
     echo -e "${GREEN}Installing tools' dependencies ${SET}"
-    sudo add-apt-repository ppa:longsleep/golang-backports
-    sudo apt-get update && sudo apt-get -y upgrade
-    sudo apt-get install -y golang-go build-essential python3 python3-dev wget unzip chromium-browser gcc make libpcap-dev python3-pip ruby-full
-    sudo ln -s /usr/bin/python3 /usr/bin/python
+    #sudo add-apt-repository ppa:longsleep/golang-backports
+    #sudo apt-get update && sudo apt-get -y upgrade
+    #sudo apt-get install -y golang-go build-essential python3 python3-dev wget unzip chromium-browser gcc make libpcap-dev python3-pip ruby
+    sudo pacman -S --noconfirm python3 wget unzip chromium-browser gcc make libpcap python3-pip ruby-full
+    #sudo ln -s /usr/bin/python3 /usr/bin/python
     curl https://sh.rustup.rs -sSf | sh
     source $HOME/.cargo/env
     echo -e "${YELLOW}Finished installing tools' dependencies ${SET}\n"
