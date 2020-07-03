@@ -276,7 +276,7 @@ install_eyewitness() {
 
 install_assetfinder() {
     # https://github.com/tomnomnom/assetfinder
-    echo -e "${GREEN}Installing httprobe ${SET}"
+    echo -e "${GREEN}Installing assetfinder ${SET}"
     go get -u github.com/tomnomnom/assetfinder
     sudo cp $HOME/go/bin/assetfinder /usr/local/bin
     echo -e "${YELLOW}Finished installing assetfinder ${SET}\n"
