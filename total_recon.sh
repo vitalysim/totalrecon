@@ -33,6 +33,7 @@ show_menus() {
     echo "  15. LinkFinder"
     echo "  16. MassDNS"
     echo "  17. EyeWitness"
+    echo "  18. Assetfinder"
     echo -e "\n\n  88. Install all tools"
     echo -e "  99. Exit\n"
 }
@@ -59,6 +60,7 @@ read_option(){
         15) install_linkfinder ;;
         16) install_massdns ;;
         17) install_eyewitness ;;
+	18) install_assetfinder ;;
         88) install_all ;;
 	99) exit 0;;
 	*) echo -e "${RED}Error...${SET}" && sleep 2
@@ -272,6 +274,16 @@ install_eyewitness() {
     pause
 }
 
+install_assetfinder() {
+    # https://github.com/tomnomnom/assetfinder
+    echo -e "${GREEN}Installing httprobe ${SET}"
+    go get -u github.com/tomnomnom/assetfinder
+    sudo cp $HOME/go/bin/assetfinder /usr/local/bin
+    echo -e "${YELLOW}Finished installing assetfinder ${SET}\n"
+    pause
+
+}
+
 add_to_path() {
     if [[ ":$PATH:" == *":$HOME/tools/$1:"* ]] || grep -q "$HOME/tools/$1" $HOME/.bash_profile; then
         echo -e "${RED}$1 dir already in path${SET}"
@@ -310,6 +322,7 @@ install_all () {
     install_linkfinder
     install_massdns
     install_eyewitness
+    install_assetfinder
     pause
 }
 
