@@ -22,6 +22,7 @@ Currently installing:
   15. LinkFinder
   16. MassDNS
   17. EyeWitness
+  18. Assetfinder
 
 Usage:
 ``` console
@@ -56,6 +57,7 @@ Usage:
           15. LinkFinder
           16. MassDNS
           17. EyeWitness
+	  18. Assetfinder
 	  
 	  88. Install all tools
 	  99. Exit
